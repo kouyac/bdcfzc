@@ -7,7 +7,7 @@ theme:
 nav:
   - 首页: index.md
   - 1. 营业执照: business_license.md
-  - 2. 房产证不动产权证书: property_certificate.md
+  - 2. 房产证不动产权证书: house_property.md
   - 3. 毕业证书: bachelor.md
   - 4. 离婚证 (Divorce Certificate): divorce_certificate.md
   - 5. 机动车登记证书 (Vehicle Registration): vehicle_registration.md
