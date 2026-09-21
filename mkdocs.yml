@@ -8,13 +8,11 @@ nav:
   - 首页: index.md
   - 1. 营业执照 (Business License):
       - 最新版三证合一执照: business_license/latest.md
-      - 历史版本参考: business_license/history.md
   - 2. 不动产权证书 (Property Certificate):
-      - 不动产权证书 (新版): property_certificate/new_version.md
-      - 房屋所有权证 (旧版): property_certificate/old_version.md
+      - 房产证不动产权证书 (新版): property_certificate/new_version.md
   - 3. 毕业证书 (Graduation Certificate):
-      - 大学本科毕业证: graduation_certificate/bachelor.md
-      - 研究生/大专毕业证: graduation_certificate/postgraduate_college.md
+      - 全日制毕业证: graduation_certificate/bachelor.md
+      - 成教、自考毕业证: graduation_certificate/postgraduate_college.md
   - 4. 离婚证 (Divorce Certificate): divorce_certificate.md
   - 5. 机动车登记证书 (Vehicle Registration): vehicle_registration.md
   - 附录 (Appendix):
