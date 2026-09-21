@@ -1,0 +1,5 @@
+site_name: 国内证书大全
+site_url: https://readthedocs.io
+theme:
+  name: material
+  custom_dir: overrides
