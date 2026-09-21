@@ -6,10 +6,8 @@ theme:
 
 nav:
   - 首页: index.md
-  - 1. 营业执照 (Business License):
-      - 最新版三证合一执照: business_license/latest.md
-  - 2. 不动产权证书 (Property Certificate):
-      - 房产证不动产权证书 (新版): property_certificate/new_version.md
+  - 1. 营业执照: business_license.md
+  - 2. 房产证不动产权证书: property_certificate.md
   - 3. 毕业证书 (Graduation Certificate):
       - 全日制毕业证: graduation_certificate/bachelor.md
       - 成教、自考毕业证: graduation_certificate/postgraduate_college.md
