@@ -1,4 +1,5 @@
-#  房产证与不动产权证书文本结构分析、元数据 Schema 与翻译指南
+# 房产证与不动产权证书文本结构规范
+# Property Ownership Certificate Metadata Schema
 
 ---
 
