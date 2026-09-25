@@ -1,5 +1,5 @@
 site_name: 基于自动化排版技术的房产证制作流程及标准房产证样本解析
-site_url: https://bdcfzc.readthedocs.io/zh-cn/latest/
+site_url: https://hcafzc.readthedocs.io/zh-cn/latest/
 theme:
   name: material
   custom_dir: overrides
