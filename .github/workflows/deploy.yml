@@ -4,7 +4,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '0 0 * * 1' # ← 核心：每周自动帮您重刷发布流程，防止404休眠
+    - cron: '0 6 * * 6' # ← 核心：每周自动帮您重刷发布流程，防止404休眠
 
 permissions:
   contents: write
