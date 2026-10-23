@@ -1,15 +1,23 @@
-name: ci 
+name: publish site
 on:
   push:
     branches:
       - main
+  schedule:
+    - cron: '0 0 * * 1' # ← 核心：每周自动帮您重刷发布流程，防止404休眠
+
 permissions:
   contents: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Configure Git Credentials
+        run: |
+          git config --global user.name github-actions[bot]
+          git config --global user.email 41898282+github-actions[bot]@users.noreply.github.com
       - uses: actions/setup-python@v5
         with:
           python-version: 3.x
@@ -20,5 +28,15 @@ jobs:
           path: .cache
           restore-keys: |
             mkdocs-material-
-      - run: pip install mkdocs-material
+      
+      # 使用项目里的 requirements.txt 自动装齐所有 MkDocs 插件
+      - run: pip install -r requirements.txt
+
+      # 1. 部署网页到 gh-pages 分支
       - run: mkdocs gh-deploy --force
+
+      # 2. 核心防休眠：向 main 分支推送一个空提交，保持仓库活跃度
+      - name: Keepalive Main Branch
+        run: |
+          git commit --allow-empty -m "chore: keepalive scheduler [skip ci]"
+          git push origin main
