@@ -4,7 +4,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '0 6 * * 6' # ← 核心：每周自动帮您重刷发布流程，防止404休眠
+    - cron: '17 8 * *6'
 
 permissions:
   contents: write
@@ -14,14 +14,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
       - name: Configure Git Credentials
         run: |
           git config --global user.name github-actions[bot]
-          git config --global user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git config --global user.email 41898282+github-actions[bot]@://github.com
+
       - uses: actions/setup-python@v5
         with:
           python-version: 3.x
+
       - run: echo "cache_id=$(date +%Y%m%d)" >> $GITHUB_ENV
+
       - uses: actions/cache@v4
         with:
           key: mkdocs-material-${{ env.cache_id }}
@@ -29,14 +36,13 @@ jobs:
           restore-keys: |
             mkdocs-material-
       
-      # 使用项目里的 requirements.txt 自动装齐所有 MkDocs 插件
       - run: pip install -r requirements.txt
 
-      # 1. 部署网页到 gh-pages 分支
       - run: mkdocs gh-deploy --force
 
-      # 2. 核心防休眠：向 main 分支推送一个空提交，保持仓库活跃度
-      - name: Keepalive Main Branch
+      - name: Keepalive Workflow Permanent
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
         run: |
-          git commit --allow-empty -m "chore: keepalive scheduler [skip ci]"
-          git push origin main
+          gh workflow enable deploy.yml || true
